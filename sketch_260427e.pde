@@ -9,11 +9,11 @@ int lives = 3;
 
 boolean isGameOver = false;
 
-// ⭐ Stars
+// Stars
 float[] starX = new float[50];
 float[] starY = new float[50];
 
-// 🎯 Power-up
+//  Power-up
 float powerX, powerY;
 boolean showPower = false;
 
@@ -37,7 +37,7 @@ void draw() {
 
   background(10, 20, 50);
 
-  // ⭐ Moving Stars
+  //  Moving Stars
   for (int i = 0; i < 50; i++) {
     fill(255);
     ellipse(starX[i], starY[i], 2, 2);
@@ -48,11 +48,11 @@ void draw() {
     }
   }
 
-  // ✨ Center line
+  //  Center line
   stroke(255, 80);
   line(width/2, 0, width/2, height);
 
-  // 🟡 Ball glow
+  //  Ball glow
   noStroke();
   for (int i = 12; i > 0; i--) {
     fill(255, 255, 0, 20);
@@ -69,12 +69,12 @@ void draw() {
     speedY *= -1;
   }
 
-  // 🧍 Player paddle
+  //  Player paddle
   paddleY = mouseY - 40;
   fill(0, 200, 255);
   rect(10, paddleY, 12, 80, 10);
 
-  // 🤖 AI
+  
   aiY += (ballY - aiY - 40) * 0.08;
   fill(255, 80, 160);
   rect(width - 22, aiY, 12, 80, 10);
@@ -91,7 +91,7 @@ void draw() {
     ballX = width - 25;
   }
 
-  // ❌ miss
+  //  miss
   if (ballX < 0) {
     lives--;
     if (lives <= 0) {
@@ -106,7 +106,7 @@ void draw() {
     resetBall();
   }
 
-  // 🎯 Power-up spawn
+  //  Power-up spawn
   if (frameCount % 300 == 0) {
     powerX = random(100, width-100);
     powerY = random(50, height-50);
@@ -128,7 +128,7 @@ void draw() {
   drawUI();
 }
 
-// 🔄 Reset
+//  Reset
 void resetBall() {
   ballX = width/2;
   ballY = height/2;
@@ -145,7 +145,7 @@ void drawUI() {
   textAlign(LEFT);
   text("Score: " + score, 20, 30);
 
-  // ❤️ Lives as hearts
+  //  Lives as hearts
   for (int i = 0; i < lives; i++) {
     fill(255, 0, 0);
     ellipse(width - 30 - i*25, 25, 15, 15);
@@ -157,7 +157,7 @@ void drawUI() {
   text("Level: " + (score/100 + 1), width/2, 30);
 }
 
-// 💀 Game Over
+//  Game Over
 void drawGameOver() {
   background(0);
 
@@ -184,7 +184,7 @@ void drawGameOver() {
   text("Click to Restart", width/2, height/2 + 80);
 }
 
-// 🔁 Restart
+//  Restart
 void mousePressed() {
   if (isGameOver) {
     score = 0;
